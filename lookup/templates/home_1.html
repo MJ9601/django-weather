@@ -2,7 +2,25 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Hello World!!</h1>>
 
+{%if api %}
+	{% if api == 'Error ...'%}
+		There was a problem please try again ....
+	{% else%}
+<div class="jumbotron">
+  	<h1 class="display-4">{{api.name}}</h1>
+ 	 <p class="lead">{{api.weather.0.description}}<br/>Temperature     {{api.main.temp}}<br/> </p>
+ 	 <hr class="my-4">
+  	
+ 	 <a class="btn btn-primary btn-lg" href="#" role="button">Learn more...</a>
+ 	 <br/><br/><p class="lead">Feels like temperature    {{api.main.feels_like}}<br/>
+		minimum temperature    {{api.main.temp_min}}<br/>
+		maximum temperature    {{api.main.temp_max}}<br/>
+		Wind Speed   {{api.wind.speed}}<br/>
+		clouds percentage    {{api.clouds.all}}<p/>
+</div>
+
+	{% endif %}
+{%endif%}
 {%  endblock  %}
 
